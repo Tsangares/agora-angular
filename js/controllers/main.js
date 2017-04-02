@@ -1,4 +1,4 @@
-module.exports =  function($scope, $rootScope, $route,
+module.exports = function($scope, $rootScope, $route,
     $routeParams, $location, $cookies, $sce) {
     $scope.name = 'mainController';
     $rootScope.minBanner = false;
@@ -9,32 +9,33 @@ module.exports =  function($scope, $rootScope, $route,
     var reader = new commonmark.Parser();
     var writer = new commonmark.HtmlRenderer();
 
-      $scope.mark = function (text) {
+    $scope.mark = function(text) {
         var parsed = reader.parse(text);
         return $sce.trustAsHtml(writer.render(parsed));
 
-      }
+    }
     $scope.back = function() {
-      window.history.back();
+        window.history.back();
     }
-    $scope.minimiseHeader = function (isMin) {
-      $scope.minBanner = isMin;
-      $cookies.put('minBanner', $scope.minBanner)
-      $scope.$apply()
+    $scope.minimiseHeader = function(isMin) {
+        $scope.minBanner = isMin;
+        $cookies.put('minBanner', $scope.minBanner)
+        $scope.$apply()
     };
-    $scope.tagSearch = function (tag) {
-      $location.path('/search/').search(
-        {query: tag,
-        doQ: false,
-        doR: false,
-        doU: false,
-        doT: true});
+    $scope.tagSearch = function(tag) {
+        $location.path('/search/').search({
+            query: tag,
+            doQ: false,
+            doR: false,
+            doU: false,
+            doT: true
+        });
     }
-    window.addEventListener('scroll', function(e){
+    window.addEventListener('scroll', function(e) {
         var distanceY = window.pageYOffset,
             shrinkOn = 20,
             absOn = 70,
-            banner = document.getElementById ('banner');
+            banner = document.getElementById('banner');
 
         //listens for banner change
         if (distanceY > shrinkOn) {

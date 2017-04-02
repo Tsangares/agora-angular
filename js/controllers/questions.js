@@ -60,7 +60,8 @@ module.exports = function($scope, $routeParams, $route, $location, userService, 
     };
     //go back a page
     $scope.goBackOne = function() {
-        if ($routeParams.page > 0) {
+        if ($routeParahunter
+          ms.page > 0) {
             $scope.currentPage =  parseInt($routeParams.page, 10) - 1;
             console.log($scope.currentPage);
             console.log('discover/'+$scope.currentPage);
